@@ -15,6 +15,8 @@ EOS_IDX = global_variables.EOS_IDX;
 class BagOfWords(nn.Module):
     def init_layers(self):
         for l in self.layers:
+            # Get a named attribute from an object; getattr(x, 'y') is equivalent to x.y.
+            # When a default argument is given, it is returned when the attribute doesn't
             if getattr(l, "weight", None) is not None:
                 torch.nn.init.xavier_uniform_(l.weight)
 
@@ -44,6 +46,7 @@ class BagOfWords(nn.Module):
 
         if batch_norm is True:
             self.batch_norm = nn.BatchNorm1d(self.emb_dim)
+            
         self.layers = nn.ModuleList([nn.Linear(self.emb_dim, self.hidden_size)])
 
         self.layers.append(self.activation())
@@ -52,6 +55,7 @@ class BagOfWords(nn.Module):
             self.layers.append(nn.Linear(self.hidden_size, self.hidden_size))
             self.layers.append(self.activation())
             self.layers.append(nn.Dropout(p=dropout))
+            
         self.layers.append(nn.Linear(self.hidden_size, self.hidden_size))
         self.init_layers()
 

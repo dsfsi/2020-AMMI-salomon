@@ -87,3 +87,7 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+# custum ignore
+notebooks/MT-ASR/data/
+notebooks/MT-ASR/en2ln/
