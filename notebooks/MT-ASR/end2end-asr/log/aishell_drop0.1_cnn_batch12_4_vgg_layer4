@@ -1,0 +1,1 @@
+2020-07-14 01:45:34,688 - {'sample_rate': 16000, 'window_size': 0.02, 'window_stride': 0.01, 'window': 'hamming', 'noise_dir': None, 'noise_prob': 0.4, 'noise_levels': (0.0, 0.5)}
