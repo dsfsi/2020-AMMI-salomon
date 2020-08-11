@@ -1,8 +1,9 @@
-2020-08-10 15:37:20,275 - {'sample_rate': 16000, 'window_size': 0.005, 'window_stride': 0.01, 'window': 'hamming', 'noise_dir': None, 'noise_prob': 0.4, 'noise_levels': (0.0, 0.5)}
-2020-08-10 15:37:24,160 - Transformer(
+2020-08-11 00:08:37,882 - {'sample_rate': 1600, 'window_size': 0.02, 'window_stride': 0.01, 'window': 'hamming', 'noise_dir': None, 'noise_prob': 0.4, 'noise_levels': (0.0, 0.5)}
+2020-08-11 00:09:03,141 - Continue from checkpoint: save/libri_drop0.1_cnn_batch12_6_vgg_layer_notebook/best_model.th
+2020-08-11 00:09:33,243 - Transformer(
   (encoder): Encoder(
     (dropout): Dropout(p=0.1, inplace=False)
-    (input_linear): Linear(in_features=1280, out_features=512, bias=True)
+    (input_linear): Linear(in_features=512, out_features=512, bias=True)
     (layer_norm_input): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
     (positional_encoding): PositionalEncoding()
     (layers): ModuleList(
@@ -133,6 +134,3 @@
     (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
   )
 )
-2020-08-10 15:37:24,167 - Trainer is initialized
-2020-08-10 15:37:24,167 - name libri_drop0.1_cnn_batch12_4_vgg_layer
-2020-08-10 15:37:24,168 - TRAIN
