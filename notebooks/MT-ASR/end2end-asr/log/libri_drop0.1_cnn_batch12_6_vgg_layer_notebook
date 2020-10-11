@@ -1,6 +1,6 @@
-2020-09-03 13:31:26,215 - {'sample_rate': 1600, 'window_size': 0.02, 'window_stride': 0.01, 'window': 'hamming', 'noise_dir': None, 'noise_prob': 0.4, 'noise_levels': (0.0, 0.5)}
-2020-09-03 13:31:26,868 - Continue from checkpoint: save/libri_drop0.1_cnn_batch12_6_vgg_layer_notebook/best_model.th
-2020-09-03 13:31:55,823 - Transformer(
+2020-09-14 09:29:08,120 - {'sample_rate': 1600, 'window_size': 0.02, 'window_stride': 0.01, 'window': 'hamming', 'noise_dir': None, 'noise_prob': 0.4, 'noise_levels': (0.0, 0.5)}
+2020-09-14 09:29:15,706 - Continue from checkpoint: save/libri_drop0.1_cnn_batch12_6_vgg_layer_notebook/best_model.th
+2020-09-14 09:29:45,247 - Transformer(
   (encoder): Encoder(
     (dropout): Dropout(p=0.1, inplace=False)
     (input_linear): Linear(in_features=512, out_features=512, bias=True)
@@ -134,12 +134,7 @@
     (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
   )
 )
-2020-09-03 13:31:55,829 - Trainer is initialized
-2020-09-03 13:31:55,829 - name libri_drop0.1_cnn_batch12_6_vgg_layer_notebook
-2020-09-03 13:31:55,831 - TRAIN
-2020-09-03 13:34:05,900 - {'sample_rate': 1600, 'window_size': 0.02, 'window_stride': 0.01, 'window': 'hamming', 'noise_dir': None, 'noise_prob': 0.4, 'noise_levels': (0.0, 0.5)}
-2020-09-03 13:34:08,571 - Continue from checkpoint: save/libri_drop0.1_cnn_batch12_6_vgg_layer_notebook/best_model.th
-2020-09-03 13:34:08,940 - Transformer(
+2020-09-14 09:35:16,776 - Transformer(
   (encoder): Encoder(
     (dropout): Dropout(p=0.1, inplace=False)
     (input_linear): Linear(in_features=512, out_features=512, bias=True)
@@ -273,6 +268,455 @@
     (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
   )
 )
-2020-09-03 13:34:09,164 - Trainer is initialized
-2020-09-03 13:34:09,164 - name libri_drop0.1_cnn_batch12_6_vgg_layer_notebook
-2020-09-03 13:34:09,165 - TRAIN
+2020-09-14 09:35:27,980 - Transformer(
+  (encoder): Encoder(
+    (dropout): Dropout(p=0.1, inplace=False)
+    (input_linear): Linear(in_features=512, out_features=512, bias=True)
+    (layer_norm_input): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    (positional_encoding): PositionalEncoding()
+    (layers): ModuleList(
+      (0): EncoderLayer(
+        (self_attn): MultiHeadAttention(
+          (query_linear): Linear(in_features=512, out_features=384, bias=True)
+          (key_linear): Linear(in_features=512, out_features=384, bias=True)
+          (value_linear): Linear(in_features=512, out_features=384, bias=True)
+          (attention): ScaledDotProductAttention(
+            (dropout): Dropout(p=0.1, inplace=False)
+            (softmax): Softmax(dim=2)
+          )
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (output_linear): Linear(in_features=384, out_features=512, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (pos_ffn): PositionwiseFeedForwardWithConv(
+          (conv_1): Conv1d(512, 2048, kernel_size=(1,), stride=(1,))
+          (conv_2): Conv1d(2048, 512, kernel_size=(1,), stride=(1,))
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (1): EncoderLayer(
+        (self_attn): MultiHeadAttention(
+          (query_linear): Linear(in_features=512, out_features=384, bias=True)
+          (key_linear): Linear(in_features=512, out_features=384, bias=True)
+          (value_linear): Linear(in_features=512, out_features=384, bias=True)
+          (attention): ScaledDotProductAttention(
+            (dropout): Dropout(p=0.1, inplace=False)
+            (softmax): Softmax(dim=2)
+          )
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (output_linear): Linear(in_features=384, out_features=512, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (pos_ffn): PositionwiseFeedForwardWithConv(
+          (conv_1): Conv1d(512, 2048, kernel_size=(1,), stride=(1,))
+          (conv_2): Conv1d(2048, 512, kernel_size=(1,), stride=(1,))
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (decoder): Decoder(
+    (trg_embedding): Embedding(32, 512, padding_idx=0)
+    (positional_encoding): PositionalEncoding()
+    (dropout): Dropout(p=0.1, inplace=False)
+    (layers): ModuleList(
+      (0): DecoderLayer(
+        (self_attn): MultiHeadAttention(
+          (query_linear): Linear(in_features=512, out_features=384, bias=True)
+          (key_linear): Linear(in_features=512, out_features=384, bias=True)
+          (value_linear): Linear(in_features=512, out_features=384, bias=True)
+          (attention): ScaledDotProductAttention(
+            (dropout): Dropout(p=0.1, inplace=False)
+            (softmax): Softmax(dim=2)
+          )
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (output_linear): Linear(in_features=384, out_features=512, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (encoder_attn): MultiHeadAttention(
+          (query_linear): Linear(in_features=512, out_features=384, bias=True)
+          (key_linear): Linear(in_features=512, out_features=384, bias=True)
+          (value_linear): Linear(in_features=512, out_features=384, bias=True)
+          (attention): ScaledDotProductAttention(
+            (dropout): Dropout(p=0.1, inplace=False)
+            (softmax): Softmax(dim=2)
+          )
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (output_linear): Linear(in_features=384, out_features=512, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (pos_ffn): PositionwiseFeedForwardWithConv(
+          (conv_1): Conv1d(512, 2048, kernel_size=(1,), stride=(1,))
+          (conv_2): Conv1d(2048, 512, kernel_size=(1,), stride=(1,))
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (1): DecoderLayer(
+        (self_attn): MultiHeadAttention(
+          (query_linear): Linear(in_features=512, out_features=384, bias=True)
+          (key_linear): Linear(in_features=512, out_features=384, bias=True)
+          (value_linear): Linear(in_features=512, out_features=384, bias=True)
+          (attention): ScaledDotProductAttention(
+            (dropout): Dropout(p=0.1, inplace=False)
+            (softmax): Softmax(dim=2)
+          )
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (output_linear): Linear(in_features=384, out_features=512, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (encoder_attn): MultiHeadAttention(
+          (query_linear): Linear(in_features=512, out_features=384, bias=True)
+          (key_linear): Linear(in_features=512, out_features=384, bias=True)
+          (value_linear): Linear(in_features=512, out_features=384, bias=True)
+          (attention): ScaledDotProductAttention(
+            (dropout): Dropout(p=0.1, inplace=False)
+            (softmax): Softmax(dim=2)
+          )
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (output_linear): Linear(in_features=384, out_features=512, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (pos_ffn): PositionwiseFeedForwardWithConv(
+          (conv_1): Conv1d(512, 2048, kernel_size=(1,), stride=(1,))
+          (conv_2): Conv1d(2048, 512, kernel_size=(1,), stride=(1,))
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (output_linear): Linear(in_features=512, out_features=32, bias=False)
+  )
+  (conv): Sequential(
+    (0): Conv2d(1, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (6): ReLU()
+    (7): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (8): ReLU()
+    (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+)
+2020-09-14 09:35:29,546 - Trainer is initialized
+2020-09-14 09:35:29,547 - name libri_drop0.1_cnn_batch12_6_emb_cnn_layer_notebook
+2020-09-14 09:35:29,547 - TRAIN
+2020-09-14 09:47:29,179 - Epoch 1 || TRAIN LOSS: 2.3050 || CER: 71.66% || WER: 115.09% || LR: 0.0005922
+2020-09-14 09:47:29,180 - VALID
+2020-09-14 09:49:12,553 - VALID SET 1||LOSS: 1.9147 || CER: 66.28% || WER: 115.69%
+2020-09-14 09:49:13,043 - SHUFFLE
+2020-09-14 09:49:13,044 - TRAIN
+2020-09-14 10:00:25,807 - Epoch 2 || TRAIN LOSS: 1.7768 || CER: 63.96% || WER: 105.84% || LR: 0.0005367
+2020-09-14 10:00:25,807 - VALID
+2020-09-14 10:01:49,835 - VALID SET 2||LOSS: 1.6845 || CER: 60.83% || WER: 105.42%
+2020-09-14 10:01:50,515 - SHUFFLE
+2020-09-14 10:01:50,517 - TRAIN
+2020-09-14 10:13:03,427 - Epoch 3 || TRAIN LOSS: 1.6116 || CER: 59.43% || WER: 104.29% || LR: 0.0004382
+2020-09-14 10:13:03,428 - VALID
+2020-09-14 10:14:27,201 - VALID SET 3||LOSS: 1.6656 || CER: 59.68% || WER: 105.59%
+2020-09-14 10:14:28,523 - SHUFFLE
+2020-09-14 10:14:28,524 - TRAIN
+2020-09-14 10:25:41,404 - Epoch 4 || TRAIN LOSS: 1.5349 || CER: 57.06% || WER: 102.80% || LR: 0.0003795
+2020-09-14 10:25:41,405 - VALID
+2020-09-14 10:27:05,381 - VALID SET 4||LOSS: 1.6883 || CER: 60.17% || WER: 104.80%
+2020-09-14 10:27:05,382 - SHUFFLE
+2020-09-14 10:27:05,383 - TRAIN
+2020-09-14 10:38:18,204 - Epoch 5 || TRAIN LOSS: 1.4863 || CER: 55.54% || WER: 101.92% || LR: 0.0003395
+2020-09-14 10:38:18,204 - VALID
+2020-09-14 10:39:42,549 - VALID SET 5||LOSS: 1.7004 || CER: 60.34% || WER: 102.92%
+2020-09-14 10:39:42,549 - SHUFFLE
+2020-09-14 10:39:42,550 - TRAIN
+2020-09-14 10:50:55,918 - Epoch 6 || TRAIN LOSS: 1.4518 || CER: 54.46% || WER: 101.19% || LR: 0.0003099
+2020-09-14 10:50:55,918 - VALID
+2020-09-14 10:52:20,065 - VALID SET 6||LOSS: 1.6801 || CER: 60.03% || WER: 104.20%
+2020-09-14 10:52:20,066 - SHUFFLE
+2020-09-14 10:52:20,066 - TRAIN
+2020-09-14 11:03:33,356 - Epoch 7 || TRAIN LOSS: 1.4263 || CER: 53.64% || WER: 100.61% || LR: 0.0002869
+2020-09-14 11:03:33,357 - VALID
+2020-09-14 11:04:57,744 - VALID SET 7||LOSS: 1.6948 || CER: 60.25% || WER: 106.81%
+2020-09-14 11:04:57,744 - SHUFFLE
+2020-09-14 11:04:57,745 - TRAIN
+2020-09-14 11:16:11,278 - Epoch 8 || TRAIN LOSS: 1.4052 || CER: 52.99% || WER: 100.07% || LR: 0.0002684
+2020-09-14 11:16:11,279 - VALID
+2020-09-14 11:17:35,522 - VALID SET 8||LOSS: 1.7101 || CER: 61.03% || WER: 105.33%
+2020-09-14 11:17:35,522 - SHUFFLE
+2020-09-14 11:17:35,523 - TRAIN
+2020-09-14 11:28:48,819 - Epoch 9 || TRAIN LOSS: 1.3874 || CER: 52.37% || WER: 99.58% || LR: 0.0002530
+2020-09-14 11:28:48,820 - VALID
+2020-09-14 11:30:13,071 - VALID SET 9||LOSS: 1.7326 || CER: 61.57% || WER: 104.52%
+2020-09-14 11:30:13,072 - SHUFFLE
+2020-09-14 11:30:13,073 - TRAIN
+2020-09-14 11:41:26,295 - Epoch 10 || TRAIN LOSS: 1.3721 || CER: 51.89% || WER: 99.21% || LR: 0.0002400
+2020-09-14 11:41:26,295 - VALID
+2020-09-14 11:42:50,531 - VALID SET 10||LOSS: 1.6745 || CER: 60.15% || WER: 101.90%
+2020-09-14 11:42:50,531 - SHUFFLE
+2020-09-14 11:42:50,533 - TRAIN
+2020-09-14 11:54:05,181 - Epoch 11 || TRAIN LOSS: 1.3588 || CER: 51.41% || WER: 98.75% || LR: 0.0002289
+2020-09-14 11:54:05,182 - VALID
+2020-09-14 11:55:29,910 - VALID SET 11||LOSS: 1.6828 || CER: 60.35% || WER: 104.34%
+2020-09-14 11:55:30,098 - SHUFFLE
+2020-09-14 11:55:30,099 - TRAIN
+2020-09-14 12:06:46,831 - Epoch 12 || TRAIN LOSS: 1.3472 || CER: 51.03% || WER: 98.44% || LR: 0.0002191
+2020-09-14 12:06:46,831 - VALID
+2020-09-14 12:08:11,378 - VALID SET 12||LOSS: 1.6874 || CER: 60.20% || WER: 106.46%
+2020-09-14 12:08:11,378 - SHUFFLE
+2020-09-14 12:08:11,379 - TRAIN
+2020-09-14 12:19:26,255 - Epoch 13 || TRAIN LOSS: 1.3360 || CER: 50.68% || WER: 98.23% || LR: 0.0002105
+2020-09-14 12:19:26,255 - VALID
+2020-09-14 12:20:50,696 - VALID SET 13||LOSS: 1.6405 || CER: 58.90% || WER: 105.18%
+2020-09-14 12:20:50,927 - SHUFFLE
+2020-09-14 12:20:50,928 - TRAIN
+2020-09-14 12:32:03,967 - Epoch 14 || TRAIN LOSS: 1.3263 || CER: 50.33% || WER: 97.96% || LR: 0.0002029
+2020-09-14 12:32:03,967 - VALID
+2020-09-14 12:33:28,522 - VALID SET 14||LOSS: 1.6599 || CER: 59.49% || WER: 103.29%
+2020-09-14 12:33:28,522 - SHUFFLE
+2020-09-14 12:33:28,523 - TRAIN
+2020-09-14 12:44:43,395 - Epoch 15 || TRAIN LOSS: 1.3176 || CER: 50.04% || WER: 97.74% || LR: 0.0001960
+2020-09-14 12:44:43,395 - VALID
+2020-09-14 12:46:08,367 - VALID SET 15||LOSS: 1.7666 || CER: 61.49% || WER: 106.59%
+2020-09-14 12:46:08,367 - SHUFFLE
+2020-09-14 12:46:08,369 - TRAIN
+2020-09-14 12:57:25,049 - Epoch 16 || TRAIN LOSS: 1.3094 || CER: 49.79% || WER: 97.54% || LR: 0.0001898
+2020-09-14 12:57:25,049 - VALID
+2020-09-14 12:58:50,011 - VALID SET 16||LOSS: 1.6318 || CER: 58.40% || WER: 103.10%
+2020-09-14 12:58:50,405 - SHUFFLE
+2020-09-14 12:58:50,406 - TRAIN
+2020-09-14 13:10:06,841 - Epoch 17 || TRAIN LOSS: 1.3021 || CER: 49.53% || WER: 97.36% || LR: 0.0001841
+2020-09-14 13:10:06,842 - VALID
+2020-09-14 13:11:31,527 - VALID SET 17||LOSS: 1.7169 || CER: 59.98% || WER: 104.93%
+2020-09-14 13:11:31,528 - SHUFFLE
+2020-09-14 13:11:31,528 - TRAIN
+2020-09-14 13:22:47,997 - Epoch 18 || TRAIN LOSS: 1.2950 || CER: 49.31% || WER: 97.23% || LR: 0.0001789
+2020-09-14 13:22:47,997 - VALID
+2020-09-14 13:24:12,796 - VALID SET 18||LOSS: 1.6369 || CER: 58.80% || WER: 102.93%
+2020-09-14 13:24:12,796 - SHUFFLE
+2020-09-14 13:24:12,797 - TRAIN
+2020-09-14 13:35:29,344 - Epoch 19 || TRAIN LOSS: 1.2890 || CER: 49.10% || WER: 97.10% || LR: 0.0001741
+2020-09-14 13:35:29,344 - VALID
+2020-09-14 13:36:54,013 - VALID SET 19||LOSS: 1.6540 || CER: 58.77% || WER: 104.09%
+2020-09-14 13:36:54,014 - SHUFFLE
+2020-09-14 13:36:54,014 - TRAIN
+2020-09-14 13:48:09,037 - Epoch 20 || TRAIN LOSS: 1.2830 || CER: 48.91% || WER: 96.91% || LR: 0.0001697
+2020-09-14 13:48:09,037 - VALID
+2020-09-14 13:49:33,255 - VALID SET 20||LOSS: 1.6457 || CER: 59.12% || WER: 102.94%
+2020-09-14 13:49:33,256 - SHUFFLE
+2020-09-14 13:49:33,257 - TRAIN
+2020-09-14 14:00:46,371 - Epoch 21 || TRAIN LOSS: 1.2773 || CER: 48.75% || WER: 96.83% || LR: 0.0001656
+2020-09-14 14:00:46,371 - VALID
+2020-09-14 14:02:10,504 - VALID SET 21||LOSS: 1.8114 || CER: 59.67% || WER: 102.96%
+2020-09-14 14:02:10,693 - SHUFFLE
+2020-09-14 14:02:10,694 - TRAIN
+2020-09-14 14:13:24,038 - Epoch 22 || TRAIN LOSS: 1.2722 || CER: 48.57% || WER: 96.68% || LR: 0.0001618
+2020-09-14 14:13:24,039 - VALID
+2020-09-14 14:14:48,313 - VALID SET 22||LOSS: 1.6458 || CER: 58.32% || WER: 103.21%
+2020-09-14 14:14:48,314 - SHUFFLE
+2020-09-14 14:14:48,315 - TRAIN
+2020-09-14 14:26:01,221 - Epoch 23 || TRAIN LOSS: 1.2673 || CER: 48.42% || WER: 96.58% || LR: 0.0001583
+2020-09-14 14:26:01,221 - VALID
+2020-09-14 14:27:25,479 - VALID SET 23||LOSS: 1.6322 || CER: 58.50% || WER: 102.79%
+2020-09-14 14:27:25,479 - SHUFFLE
+2020-09-14 14:27:25,480 - TRAIN
+2020-09-14 14:38:38,950 - Epoch 24 || TRAIN LOSS: 1.2629 || CER: 48.26% || WER: 96.51% || LR: 0.0001549
+2020-09-14 14:38:38,951 - VALID
+2020-09-14 14:40:03,218 - VALID SET 24||LOSS: 1.7455 || CER: 58.79% || WER: 102.36%
+2020-09-14 14:40:03,219 - SHUFFLE
+2020-09-14 14:40:03,220 - TRAIN
+2020-09-14 14:51:16,395 - Epoch 25 || TRAIN LOSS: 1.2582 || CER: 48.10% || WER: 96.41% || LR: 0.0001518
+2020-09-14 14:51:16,395 - VALID
+2020-09-14 14:52:40,895 - VALID SET 25||LOSS: 1.8196 || CER: 59.19% || WER: 104.11%
+2020-09-14 14:52:40,895 - SHUFFLE
+2020-09-14 14:52:40,896 - TRAIN
+2020-09-14 15:03:54,043 - Epoch 26 || TRAIN LOSS: 1.2538 || CER: 47.99% || WER: 96.33% || LR: 0.0001489
+2020-09-14 15:03:54,043 - VALID
+2020-09-14 15:05:18,209 - VALID SET 26||LOSS: 1.6763 || CER: 58.70% || WER: 103.98%
+2020-09-14 15:05:18,209 - SHUFFLE
+2020-09-14 15:05:18,210 - TRAIN
+2020-09-14 15:16:31,075 - Epoch 27 || TRAIN LOSS: 1.2498 || CER: 47.83% || WER: 96.16% || LR: 0.0001461
+2020-09-14 15:16:31,075 - VALID
+2020-09-14 15:17:55,312 - VALID SET 27||LOSS: 1.7633 || CER: 58.52% || WER: 102.58%
+2020-09-14 15:17:55,312 - SHUFFLE
+2020-09-14 15:17:55,314 - TRAIN
+2020-09-14 15:29:08,570 - Epoch 28 || TRAIN LOSS: 1.2459 || CER: 47.72% || WER: 96.12% || LR: 0.0001434
+2020-09-14 15:29:08,571 - VALID
+2020-09-14 15:30:32,999 - VALID SET 28||LOSS: 1.7862 || CER: 59.79% || WER: 100.90%
+2020-09-14 15:30:32,999 - SHUFFLE
+2020-09-14 15:30:33,000 - TRAIN
+2020-09-14 15:41:46,460 - Epoch 29 || TRAIN LOSS: 1.2423 || CER: 47.62% || WER: 96.02% || LR: 0.0001410
+2020-09-14 15:41:46,460 - VALID
+2020-09-14 15:43:10,911 - VALID SET 29||LOSS: 1.7257 || CER: 58.27% || WER: 102.81%
+2020-09-14 15:43:10,911 - SHUFFLE
+2020-09-14 15:43:10,912 - TRAIN
+2020-09-14 15:54:24,621 - Epoch 30 || TRAIN LOSS: 1.2392 || CER: 47.50% || WER: 95.96% || LR: 0.0001386
+2020-09-14 15:54:24,622 - VALID
+2020-09-14 15:55:49,004 - VALID SET 30||LOSS: 1.7467 || CER: 58.93% || WER: 101.74%
+2020-09-14 15:55:49,004 - SHUFFLE
+2020-09-14 15:55:49,005 - TRAIN
+2020-09-14 16:07:02,124 - Epoch 31 || TRAIN LOSS: 1.2350 || CER: 47.40% || WER: 95.87% || LR: 0.0001363
+2020-09-14 16:07:02,125 - VALID
+2020-09-14 16:08:26,422 - VALID SET 31||LOSS: 1.7858 || CER: 58.03% || WER: 102.71%
+2020-09-14 16:08:26,608 - SHUFFLE
+2020-09-14 16:08:26,610 - TRAIN
+2020-09-14 16:19:39,745 - Epoch 32 || TRAIN LOSS: 1.2318 || CER: 47.28% || WER: 95.86% || LR: 0.0001342
+2020-09-14 16:19:39,746 - VALID
+2020-09-14 16:21:03,922 - VALID SET 32||LOSS: 1.6939 || CER: 58.45% || WER: 101.59%
+2020-09-14 16:21:03,923 - SHUFFLE
+2020-09-14 16:21:03,924 - TRAIN
+2020-09-14 16:32:16,758 - Epoch 33 || TRAIN LOSS: 1.2288 || CER: 47.18% || WER: 95.77% || LR: 0.0001321
+2020-09-14 16:32:16,758 - VALID
+2020-09-14 16:33:40,802 - VALID SET 33||LOSS: 1.6710 || CER: 57.58% || WER: 100.53%
+2020-09-14 16:33:40,802 - SHUFFLE
+2020-09-14 16:33:40,803 - TRAIN
+2020-09-14 16:44:54,023 - Epoch 34 || TRAIN LOSS: 1.2260 || CER: 47.10% || WER: 95.71% || LR: 0.0001302
+2020-09-14 16:44:54,023 - VALID
+2020-09-14 16:46:18,246 - VALID SET 34||LOSS: 1.7381 || CER: 58.54% || WER: 102.41%
+2020-09-14 16:46:18,246 - SHUFFLE
+2020-09-14 16:46:18,248 - TRAIN
+2020-09-14 16:57:31,432 - Epoch 35 || TRAIN LOSS: 1.2227 || CER: 47.04% || WER: 95.61% || LR: 0.0001283
+2020-09-14 16:57:31,433 - VALID
+2020-09-14 16:58:55,655 - VALID SET 35||LOSS: 1.8321 || CER: 58.91% || WER: 102.85%
+2020-09-14 16:58:55,655 - SHUFFLE
+2020-09-14 16:58:55,656 - TRAIN
+2020-09-14 17:10:09,719 - Epoch 36 || TRAIN LOSS: 1.2198 || CER: 46.91% || WER: 95.56% || LR: 0.0001265
+2020-09-14 17:10:09,720 - VALID
+2020-09-14 17:11:34,030 - VALID SET 36||LOSS: 1.7039 || CER: 58.68% || WER: 100.68%
+2020-09-14 17:11:34,030 - SHUFFLE
+2020-09-14 17:11:34,031 - TRAIN
+2020-09-14 17:22:47,288 - Epoch 37 || TRAIN LOSS: 1.2169 || CER: 46.82% || WER: 95.54% || LR: 0.0001248
+2020-09-14 17:22:47,288 - VALID
+2020-09-14 17:24:11,601 - VALID SET 37||LOSS: 1.6728 || CER: 58.62% || WER: 101.01%
+2020-09-14 17:24:11,602 - SHUFFLE
+2020-09-14 17:24:11,603 - TRAIN
+2020-09-14 17:35:24,954 - Epoch 38 || TRAIN LOSS: 1.2143 || CER: 46.76% || WER: 95.48% || LR: 0.0001231
+2020-09-14 17:35:24,955 - VALID
+2020-09-14 17:36:49,135 - VALID SET 38||LOSS: 1.6469 || CER: 58.00% || WER: 99.96%
+2020-09-14 17:36:49,135 - SHUFFLE
+2020-09-14 17:36:49,137 - TRAIN
+2020-09-14 17:48:02,283 - Epoch 39 || TRAIN LOSS: 1.2118 || CER: 46.66% || WER: 95.41% || LR: 0.0001215
+2020-09-14 17:48:02,284 - VALID
+2020-09-14 17:49:26,717 - VALID SET 39||LOSS: 1.7548 || CER: 58.64% || WER: 100.46%
+2020-09-14 17:49:26,718 - SHUFFLE
+2020-09-14 17:49:26,719 - TRAIN
+2020-09-14 18:00:40,255 - Epoch 40 || TRAIN LOSS: 1.2093 || CER: 46.57% || WER: 95.35% || LR: 0.0001200
+2020-09-14 18:00:40,255 - VALID
+2020-09-14 18:02:04,555 - VALID SET 40||LOSS: 1.6973 || CER: 57.83% || WER: 100.58%
+2020-09-14 18:02:04,555 - SHUFFLE
+2020-09-14 18:02:04,556 - TRAIN
+2020-09-14 18:13:18,113 - Epoch 41 || TRAIN LOSS: 1.2068 || CER: 46.50% || WER: 95.30% || LR: 0.0001185
+2020-09-14 18:13:18,114 - VALID
+2020-09-14 18:14:42,726 - VALID SET 41||LOSS: 1.6393 || CER: 58.27% || WER: 100.21%
+2020-09-14 18:14:42,913 - SHUFFLE
+2020-09-14 18:14:42,914 - TRAIN
+2020-09-14 18:25:56,331 - Epoch 42 || TRAIN LOSS: 1.2044 || CER: 46.44% || WER: 95.25% || LR: 0.0001171
+2020-09-14 18:25:56,332 - VALID
+2020-09-14 18:27:20,566 - VALID SET 42||LOSS: 1.6671 || CER: 58.71% || WER: 101.49%
+2020-09-14 18:27:20,566 - SHUFFLE
+2020-09-14 18:27:20,567 - TRAIN
+2020-09-14 18:38:34,105 - Epoch 43 || TRAIN LOSS: 1.2021 || CER: 46.36% || WER: 95.20% || LR: 0.0001158
+2020-09-14 18:38:34,105 - VALID
+2020-09-14 18:39:58,311 - VALID SET 43||LOSS: 1.7251 || CER: 57.91% || WER: 101.25%
+2020-09-14 18:39:58,311 - SHUFFLE
+2020-09-14 18:39:58,313 - TRAIN
+2020-09-14 18:51:12,111 - Epoch 44 || TRAIN LOSS: 1.1996 || CER: 46.27% || WER: 95.15% || LR: 0.0001144
+2020-09-14 18:51:12,112 - VALID
+2020-09-14 18:52:36,229 - VALID SET 44||LOSS: 1.7470 || CER: 58.72% || WER: 100.36%
+2020-09-14 18:52:36,229 - SHUFFLE
+2020-09-14 18:52:36,230 - TRAIN
+2020-09-14 19:03:49,180 - Epoch 45 || TRAIN LOSS: 1.1969 || CER: 46.19% || WER: 95.12% || LR: 0.0001132
+2020-09-14 19:03:49,181 - VALID
+2020-09-14 19:05:13,516 - VALID SET 45||LOSS: 1.6580 || CER: 58.27% || WER: 100.58%
+2020-09-14 19:05:13,516 - SHUFFLE
+2020-09-14 19:05:13,517 - TRAIN
+2020-09-14 19:16:26,430 - Epoch 46 || TRAIN LOSS: 1.1947 || CER: 46.14% || WER: 95.03% || LR: 0.0001119
+2020-09-14 19:16:26,430 - VALID
+2020-09-14 19:17:50,786 - VALID SET 46||LOSS: 1.6716 || CER: 58.15% || WER: 101.11%
+2020-09-14 19:17:50,787 - SHUFFLE
+2020-09-14 19:17:50,788 - TRAIN
+2020-09-14 19:29:03,329 - Epoch 47 || TRAIN LOSS: 1.1925 || CER: 46.08% || WER: 95.05% || LR: 0.0001107
+2020-09-14 19:29:03,329 - VALID
+2020-09-14 19:30:27,492 - VALID SET 47||LOSS: 1.6933 || CER: 58.85% || WER: 101.74%
+2020-09-14 19:30:27,493 - SHUFFLE
+2020-09-14 19:30:27,494 - TRAIN
+2020-09-14 19:41:39,896 - Epoch 48 || TRAIN LOSS: 1.1908 || CER: 45.99% || WER: 94.98% || LR: 0.0001096
+2020-09-14 19:41:39,896 - VALID
+2020-09-14 19:43:04,282 - VALID SET 48||LOSS: 1.6668 || CER: 58.96% || WER: 101.38%
+2020-09-14 19:43:04,282 - SHUFFLE
+2020-09-14 19:43:04,283 - TRAIN
+2020-09-14 19:54:17,216 - Epoch 49 || TRAIN LOSS: 1.1882 || CER: 45.94% || WER: 94.95% || LR: 0.0001084
+2020-09-14 19:54:17,217 - VALID
+2020-09-14 19:55:41,317 - VALID SET 49||LOSS: 1.6322 || CER: 57.46% || WER: 101.21%
+2020-09-14 19:55:41,317 - SHUFFLE
+2020-09-14 19:55:41,318 - TRAIN
+2020-09-14 20:06:53,274 - Epoch 50 || TRAIN LOSS: 1.1866 || CER: 45.87% || WER: 94.84% || LR: 0.0001073
+2020-09-14 20:06:53,274 - VALID
+2020-09-14 20:08:17,420 - VALID SET 50||LOSS: 1.6314 || CER: 57.69% || WER: 99.69%
+2020-09-14 20:08:18,688 - SHUFFLE
+2020-09-14 20:08:18,690 - TRAIN
+2020-09-14 20:19:31,433 - Epoch 51 || TRAIN LOSS: 1.1843 || CER: 45.79% || WER: 94.85% || LR: 0.0001063
+2020-09-14 20:19:31,433 - VALID
+2020-09-14 20:20:55,943 - VALID SET 51||LOSS: 1.6224 || CER: 57.29% || WER: 99.74%
+2020-09-14 20:20:57,057 - SHUFFLE
+2020-09-14 20:20:57,059 - TRAIN
+2020-09-14 20:32:10,051 - Epoch 52 || TRAIN LOSS: 1.1829 || CER: 45.77% || WER: 94.83% || LR: 0.0001053
+2020-09-14 20:32:10,052 - VALID
+2020-09-14 20:33:34,431 - VALID SET 52||LOSS: 1.6400 || CER: 57.26% || WER: 100.42%
+2020-09-14 20:33:34,431 - SHUFFLE
+2020-09-14 20:33:34,432 - TRAIN
+2020-09-14 20:44:47,443 - Epoch 53 || TRAIN LOSS: 1.1810 || CER: 45.73% || WER: 94.79% || LR: 0.0001043
+2020-09-14 20:44:47,444 - VALID
+2020-09-14 20:46:11,612 - VALID SET 53||LOSS: 1.6450 || CER: 58.09% || WER: 100.37%
+2020-09-14 20:46:11,612 - SHUFFLE
+2020-09-14 20:46:11,613 - TRAIN
+2020-09-14 20:57:24,813 - Epoch 54 || TRAIN LOSS: 1.1789 || CER: 45.66% || WER: 94.76% || LR: 0.0001033
+2020-09-14 20:57:24,813 - VALID
+2020-09-14 20:58:49,118 - VALID SET 54||LOSS: 1.6155 || CER: 56.97% || WER: 99.49%
+2020-09-14 20:58:50,386 - SHUFFLE
+2020-09-14 20:58:50,387 - TRAIN
+2020-09-14 21:10:03,707 - Epoch 55 || TRAIN LOSS: 1.1773 || CER: 45.60% || WER: 94.68% || LR: 0.0001023
+2020-09-14 21:10:03,708 - VALID
+2020-09-14 21:11:28,088 - VALID SET 55||LOSS: 1.6219 || CER: 56.88% || WER: 100.16%
+2020-09-14 21:11:28,088 - SHUFFLE
+2020-09-14 21:11:28,089 - TRAIN
+2020-09-14 21:22:41,246 - Epoch 56 || TRAIN LOSS: 1.1754 || CER: 45.54% || WER: 94.67% || LR: 0.0001014
+2020-09-14 21:22:41,247 - VALID
+2020-09-14 21:24:05,607 - VALID SET 56||LOSS: 1.6118 || CER: 56.42% || WER: 100.50%
+2020-09-14 21:24:06,527 - SHUFFLE
+2020-09-14 21:24:06,529 - TRAIN
+2020-09-14 21:35:19,886 - Epoch 57 || TRAIN LOSS: 1.1735 || CER: 45.51% || WER: 94.63% || LR: 0.0001005
+2020-09-14 21:35:19,886 - VALID
+2020-09-14 21:36:44,254 - VALID SET 57||LOSS: 1.6378 || CER: 57.11% || WER: 100.35%
+2020-09-14 21:36:44,255 - SHUFFLE
+2020-09-14 21:36:44,256 - TRAIN
+2020-09-14 21:47:57,543 - Epoch 58 || TRAIN LOSS: 1.1720 || CER: 45.45% || WER: 94.64% || LR: 0.0000997
+2020-09-14 21:47:57,544 - VALID
+2020-09-14 21:49:21,706 - VALID SET 58||LOSS: 1.6231 || CER: 56.81% || WER: 100.91%
+2020-09-14 21:49:21,707 - SHUFFLE
+2020-09-14 21:49:21,708 - TRAIN
+2020-09-14 22:00:34,509 - Epoch 59 || TRAIN LOSS: 1.1700 || CER: 45.38% || WER: 94.59% || LR: 0.0000988
+2020-09-14 22:00:34,509 - VALID
+2020-09-14 22:01:58,641 - VALID SET 59||LOSS: 1.6099 || CER: 56.51% || WER: 100.14%
+2020-09-14 22:01:59,138 - SHUFFLE
+2020-09-14 22:01:59,139 - TRAIN
+2020-09-14 22:13:12,489 - Epoch 60 || TRAIN LOSS: 1.1689 || CER: 45.32% || WER: 94.55% || LR: 0.0000980
+2020-09-14 22:13:12,490 - VALID
+2020-09-14 22:14:37,029 - VALID SET 60||LOSS: 1.6222 || CER: 56.65% || WER: 99.65%
+2020-09-14 22:14:37,029 - SHUFFLE
+2020-09-14 22:14:37,031 - TRAIN
+2020-09-14 22:25:50,242 - Epoch 61 || TRAIN LOSS: 1.1667 || CER: 45.26% || WER: 94.43% || LR: 0.0000972
+2020-09-14 22:25:50,242 - VALID
+2020-09-14 22:27:14,354 - VALID SET 61||LOSS: 1.6233 || CER: 56.77% || WER: 101.04%
+2020-09-14 22:27:14,544 - SHUFFLE
+2020-09-14 22:27:14,545 - TRAIN
+2020-09-14 22:38:27,537 - Epoch 62 || TRAIN LOSS: 1.1653 || CER: 45.25% || WER: 94.48% || LR: 0.0000964
+2020-09-14 22:38:27,537 - VALID
+2020-09-14 22:39:51,938 - VALID SET 62||LOSS: 1.6263 || CER: 56.76% || WER: 101.38%
+2020-09-14 22:39:51,938 - SHUFFLE
+2020-09-14 22:39:51,939 - TRAIN
+2020-09-14 22:51:05,688 - Epoch 63 || TRAIN LOSS: 1.1636 || CER: 45.18% || WER: 94.44% || LR: 0.0000956
+2020-09-14 22:51:05,688 - VALID
+2020-09-14 22:52:29,862 - VALID SET 63||LOSS: 1.6075 || CER: 56.24% || WER: 100.56%
+2020-09-14 22:52:30,101 - SHUFFLE
+2020-09-14 22:52:30,102 - TRAIN
