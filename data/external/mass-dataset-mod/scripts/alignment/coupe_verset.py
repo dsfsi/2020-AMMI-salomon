@@ -8,6 +8,7 @@ from multiprocessing import Process
 from utils import *
 from parser import *
 from config import langs, TEXTGRID_SUFFIX, WAV_SUFFIX, SIL_KEY, SEP_STR
+import ipdb
 
 
 def imperfect_raw_grid_align(dictionary_sequence, textgrid_sequence, verbose=False):
@@ -173,6 +174,7 @@ def align(file, lab_dictionary, grid, verbose=False, language=None):
     dictionary_sequence = " ".join(lab_dictionary.values()) #get the text from the dictionary
     tg=tgio.openTextgrid(grid)
     
+#     ipdb.set_trace()
     tg.tierDict["ORT"] = clean_textgrid(tg.tierDict["ORT"], language) #remove enconding problems for alignment's sake
     entryList = tg.tierDict["ORT"].entryList    
     concatenated_ort = " ".join([entry.label for entry in entryList if entry != "­"])
@@ -188,6 +190,7 @@ def align(file, lab_dictionary, grid, verbose=False, language=None):
 
     if args.force:
         try:
+#             ipdb.set_trace()
             assert len(dictionary_sequence.split(" ")) == len(split_entry), "Number of words mismatch between lab and textgrid"
         except AssertionError:
             create_log_file(file.split("/")[-1] + "_error_log", dictionary_sequence, concatenated_ort)
@@ -238,6 +241,7 @@ def write_text_files(output_prefix, lab_dictionary):
 def process_document(lab_file, args):
     if args.verbose:
             print(lab_file)
+    ipdb.set_trace()
     file_prefix = get_prefix(lab_file)
     lab_dictionary = txt_to_dict(lab_file, args.language)
     textgrid_file = os.path.join(args.textgrid, file_prefix + TEXTGRID_SUFFIX)

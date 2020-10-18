@@ -77,9 +77,9 @@ def do_job(tasks_to_accomplish):
         data = {r'LANGUAGE': lang, r'OUTFORMAT': r'TextGrid'}
         files = {r'TEXT': open(osp.join(outpath, '{}.txt'.format(caption_name)), 'rb'),
                  r'SIGNAL': open(osp.join(outpath, '{}_one_channel.wav'.format(caption_name)), 'rb')}
-        #print('Sending request ...')
+        print('Sending request ...')
         r = requests.post(url, files=files, data=data)
-        #print('Processing results ...')
+        print('Processing results ...')
 
         if r.status_code == 200:
             root = etree.fromstring(r.text)
@@ -109,8 +109,8 @@ def do_job(tasks_to_accomplish):
             print('{} [{}]: {} FAIL Alignment Request'.format(pid, index_caption, caption_name))
 
         # delete temp files
-        #os.remove(osp.join(outpath, '{}.{}'.format(caption_name, text_ext)))
-        #os.remove(osp.join(outpath, '{}.{}'.format(caption_name, audio_ext)))
+        os.remove(osp.join(outpath, '{}.{}'.format(caption_name, text_ext)))
+        os.remove(osp.join(outpath, '{}.{}'.format(caption_name, audio_ext)))
 
     else:
         print('{} [{}]: {} SKIP'.format(pid, index_caption, caption_name))
