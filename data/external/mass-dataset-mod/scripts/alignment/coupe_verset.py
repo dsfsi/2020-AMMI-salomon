@@ -190,7 +190,6 @@ def align(file, lab_dictionary, grid, verbose=False, language=None):
 
     if args.force:
         try:
-#             ipdb.set_trace()
             assert len(dictionary_sequence.split(" ")) == len(split_entry), "Number of words mismatch between lab and textgrid"
         except AssertionError:
             create_log_file(file.split("/")[-1] + "_error_log", dictionary_sequence, concatenated_ort)
@@ -221,6 +220,7 @@ def slice_audio(audio, output_prefix, windows, verbose=False):
         output_file = output_prefix + SEP_STR + str(key) + WAV_SUFFIX
         if verbose:
             print(output_file, start, end)
+#         ipdb.set_trace()
         os.system("sox {} {} trim {} ={}".format(audio, output_file, start, end))
 
 def write_new_textgrids(output_prefix, windows, alignment_dictionary):
@@ -241,14 +241,26 @@ def write_text_files(output_prefix, lab_dictionary):
 def process_document(lab_file, args):
     if args.verbose:
             print(lab_file)
-    ipdb.set_trace()
+    
+    # we get the prefix of the file (e.g 'B05___05_Acts________ENGESVN1DA')
     file_prefix = get_prefix(lab_file)
+    
+    # we get the text file in dictionary form {0: 'Acts 5', 1:'But a man ...' ...}
     lab_dictionary = txt_to_dict(lab_file, args.language)
+    
+    # get the the texgrid file conresponding to the 'file_prefix'
     textgrid_file = os.path.join(args.textgrid, file_prefix + TEXTGRID_SUFFIX)
+    
+    
+    # 
     alignment_dictionary = align(lab_file, lab_dictionary, textgrid_file, language=args.language, verbose= args.verbose)
+    
+    # 
     windows = generate_audio_cuts(alignment_dictionary)
+    
     output_prefix = os.path.join(args.output, file_prefix) 
     slice_audio(os.path.join(args.wav,  file_prefix + WAV_SUFFIX), output_prefix, windows, verbose=args.verbose)
+#     ipdb.set_trace()
     write_new_textgrids(output_prefix, windows, alignment_dictionary)
     write_text_files(output_prefix, lab_dictionary)
 
