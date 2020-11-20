@@ -1,0 +1,14 @@
+This repository is the Tensorflow implementation of Synchronous Speech Recognition and Speech-to-Text Translation with Interactive Decoding, it conducts speech recognition and speech translation in one model synchronously and interactively. (Compatible with tensorflow 1.13, it may have bugs on other versions)
+
+The usage:
+1. datagen.sh
+   extract features from wave file and generate data in tfrecord format
+   require csv file for training, development and test set, whose format is wave_file_name \t transcription \t translation, the transcription and translation has been preprocessed and split into subwords
+   require a vocabulary file, it will automatically add reserved tokens, including <PAD>, <EOS>, <2L1>(for transcription), <2L2>(for translation), <DELAY>(for wait-k), <UNK>
+
+2. train.sh
+   train the model on speech recognition and speech translation tasks synchronously, if you want to change the delay time in wait-k methods, it needs to manually change the number of DELAY_SYMBOL in utils/datareader.py
+   it generally requires to use a pretrained ASR model to initialize the encoder or the whole part of synchronous model, otherwise it may not get converged
+
+3. test.sh
+   used for decoding
