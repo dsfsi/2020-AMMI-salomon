@@ -58,7 +58,7 @@ def generate_data():
 
     train_output_files = []
     output_dir = FLAGS.data_dir
-    for shard in xrange(FLAGS.num_shards):
+    for shard in range(FLAGS.num_shards):
         output_filename = "%s-%.5d-of-%.5d" % ('translation-unshuffled-train', shard, FLAGS.num_shards)
         output_file = os.path.join(output_dir, output_filename)
         train_output_files.append(output_file)

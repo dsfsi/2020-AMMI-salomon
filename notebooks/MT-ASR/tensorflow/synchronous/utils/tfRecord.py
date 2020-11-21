@@ -100,7 +100,7 @@ def save2tfrecord(dataset, mode, dir_save, size_file=5000000):
 
 
 class DataSet(object):
-    def __init__(self, filepath, vocab_path, wav_path, dim_raw_input, vocab_size, _shuffle=False):
+    def __init__(self, filepath, vocabA_path, vocabB_path, wav_path, dim_raw_input, vocab_size, _shuffle=False):
         self.list_utterances = self.gen_utter_list(filepath)
         self.list_files = filepath
         
@@ -111,11 +111,12 @@ class DataSet(object):
         self.dim_raw_input = dim_raw_input
         self._num_reserved_ids = len(RESERVED_TOKENS)
         
-        self.token2idx, self.idx2token = self._load_vocab_from_file(vocab_path, vocab_size)
+        self.token2idxA, self.idx2tokenA = self._load_vocab_from_file(vocabA_path, vocab_size)
+        self.token2idxB, self.idx2tokenB = self._load_vocab_from_file(vocabB_path, vocab_size)
         
-        self.end_id = self.token2idx['<EOS>']
-        self.id_l1 = self.token2idx['<2L1>']
-        self.id_l2 = self.token2idx['<2L2>']
+        self.end_id = self.token2idxA['<EOS>']
+        self.id_l1 = self.token2idxA['<2L1>']
+        self.id_l2 = self.token2idxB['<2L2>']
 
     def __getitem__(self, idx):
         utterance = self.list_utterances[idx]
@@ -132,13 +133,15 @@ class DataSet(object):
             print("wavefile {} is empty or damaged, we pass it away.".format(wavname))
             feature = None
         target_l1 = np.array([self.id_l1] +
-                             [self.token2idx.get(word, self.token2idx['<UNK>']) for word in target_l1.split(' ')] +
+                             [self.token2idxA.get(word, self.token2idxA['<UNK>']) for word in target_l1.split(' ')] +
                              [self.end_id],
                              dtype=np.int32)
+
         target_l2 = np.array([self.id_l2] +
-                             [self.token2idx.get(word, self.token2idx['<UNK>']) for word in target_l2.split(' ')] +
+                             [self.token2idxB.get(word, self.token2idxB['<UNK>']) for word in target_l2.split(' ')] +
                              [self.end_id],
                              dtype=np.int32)
+                             
         sample = {'id': wavname, 'inputs': feature, 'target_l1': target_l1, 'target_l2': target_l2}
 
         return sample
@@ -218,7 +221,8 @@ if __name__ == '__main__':
     wav_path_dev = args.wav_dir_dev
     wav_path_test = args.wav_dir_test
 
-    vocab_path = os.path.join(args.tmp_dir, args.vocab_name)
+    vocabA_path = os.path.join(args.tmp_dir, args.vocabA_name)
+    vocabB_path = os.path.join(args.tmp_dir, args.vocabB_name)
 
     train_csv_path = os.path.join(args.tmp_dir, args.train_csv_name)
     dev_csv_path = os.path.join(args.tmp_dir, args.dev_csv_name)
@@ -226,14 +230,14 @@ if __name__ == '__main__':
     dim_raw_input = args.dim_raw_input
     vocab_size = args.vocab_size
 
-    dataset_dev = DataSet(dev_csv_path, vocab_path, wav_path_dev,
+    dataset_dev = DataSet(dev_csv_path, vocabA_path, vocabB_path, wav_path_dev,
                           dim_raw_input, vocab_size, _shuffle=False)
     save2tfrecord(dataset_dev, 'dev', args.data_dir)
     
-    dataset_test = DataSet(test_csv_path, vocab_path, wav_path_test,
+    dataset_test = DataSet(test_csv_path, vocabA_path, vocabB_path, wav_path_test,
                            dim_raw_input, vocab_size, _shuffle=False)
     save2tfrecord(dataset_test, 'test', args.data_dir)
     
-    dataset_train = DataSet(train_csv_path, vocab_path, wav_path_train,
+    dataset_train = DataSet(train_csv_path, vocabA_path, vocabB_path, wav_path_train,
                             dim_raw_input, vocab_size, _shuffle=True)
     save2tfrecord(dataset_train, 'train', args.data_dir)

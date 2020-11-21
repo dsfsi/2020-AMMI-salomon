@@ -110,9 +110,7 @@ def transformer_params_small(data_dir, vocab_src_name, vocab_tgt_name):
     hparams.filter_size = 1024
     hparams.num_heads = 8
     hparams.batching_mantissa_bits = 2
-    
-    
-    
+        
     return hparams
 
 def transformer_params_listra(data_dir, vocab_src_name, vocab_tgt_name):

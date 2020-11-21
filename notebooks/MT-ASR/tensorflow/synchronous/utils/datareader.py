@@ -23,6 +23,7 @@ def get_input_fn(mode,
         else:
 #             prefix = os.path.join(hparams.data_dir, "test2015.0.record")
             prefix = os.path.join(hparams.data_dir, "test.0.record")
+            
         data_file_patterns = sorted(glob.glob(prefix))
         drop_long_sequences = mode == tf.contrib.learn.ModeKeys.TRAIN
 
@@ -47,11 +48,13 @@ def get_input_fn(mode,
                 inputs = tf.reshape(tf.decode_raw(features['inputs'], tf.float32),
                                     [-1, hparams.dim_feature])
                 inputs = inputs[:3000, :] if drop_long_sequences else inputs
+
                 if transform:
                     inputs = process_raw_feature(inputs, hparams.dim_feature, hparams.num_context, hparams.downsample)
                 target_l1 = tf.decode_raw(features['target_l1'], tf.int32)
                 target_l2 = tf.decode_raw(features['target_l2'], tf.int32)
-                # add delay
+                
+                # Manually Add delay (for wait-k)
                 delay_target_l2 = tf.concat([tf.constant([DELAY_SYMBOL, DELAY_SYMBOL, DELAY_SYMBOL, L2_SYMBOL], tf.int32),
                                              target_l2[1:]], 0)
 
@@ -73,6 +76,7 @@ def get_input_fn(mode,
                     tf.less(targets_l1_length, targets_l2_length),
                     lambda: (tf.pad(targets_l1, [[0, 0], [0, targets_l2_length - targets_l1_length]]), targets_l2),
                     lambda: (targets_l1, tf.pad(targets_l2, [[0, 0], [0, targets_l1_length - targets_l2_length]])))
+                    
                 feature_map["targets_l1"] = targets_l1_pad
                 feature_map["targets_l2"] = targets_l2_pad
 

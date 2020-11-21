@@ -95,6 +95,7 @@ def create_hparams():
 #         hparams = common_hparams.transformer_params_listra(FLAGS.data_dir, FLAGS.vocab_src_name, FLAGS.vocab_tgt_name)  ## !!
     else:
         raise ValueError("Do not have right model params")
+
     hparams.vocab_src_size = FLAGS.vocab_src_size
     hparams.vocab_tgt_size = FLAGS.vocab_tgt_size
 
@@ -535,5 +536,3 @@ def data_parallelism(all_workers=False):
             reuse=True,
             caching_devices=caching_devices,
             daisy_chain_variables=FLAGS.daisy_chain_variables)
-
-

@@ -98,7 +98,7 @@ class Transformer(object):
             with tf.name_scope("model"):
                 datashard_to_features = [{
                     k: v[d] for k, v in six.iteritems(transformed_features)
-                    } for d in xrange(self._num_datashards)]
+                    } for d in range(self._num_datashards)]
                 body_outputs = self._data_parallelism(self.model_fn_body, datashard_to_features)
                 extra_loss = 0.
     
@@ -217,7 +217,7 @@ def transformer_encoder(encoder_input,
                                 activation=None,
                                 use_bias=False,
                                 name='full_connect')
-        for layer in xrange(hparams.num_hidden_layers_src):
+        for layer in range(hparams.num_hidden_layers_src):
             with tf.variable_scope("layer_%d" % layer):
                 y = common_attention.multihead_attention(
                     x,
@@ -249,7 +249,7 @@ def transformer_decoder(decoder_input,
     # Summaries don't work in multi-problem setting yet.
     summaries = "problems" not in hparams.values() or len(hparams.problems) == 1
     with tf.variable_scope(name):
-        for layer in xrange(hparams.num_hidden_layers_tgt):
+        for layer in range(hparams.num_hidden_layers_tgt):
             layer_name = "layer_%d" % layer
             layer_cache = cache[layer_name] if cache is not None else None
             with tf.variable_scope(layer_name):
@@ -298,7 +298,7 @@ def transformer_decoder_for_decoding(decoder_input,
     # Summaries don't work in multi-problem setting yet.
     summaries = "problems" not in hparams.values() or len(hparams.problems) == 1
     with tf.variable_scope(name):
-        for layer in xrange(hparams.num_hidden_layers_tgt):
+        for layer in range(hparams.num_hidden_layers_tgt):
             layer_name = "layer_%d" % layer
             layer_cache = cache[layer_name] if cache is not None else None
             with tf.variable_scope(layer_name):

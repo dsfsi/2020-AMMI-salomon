@@ -122,8 +122,40 @@ class TokenTextEncoder(TextEncoder):
                 tok = line.strip().split()[0]
                 self._token_to_id[tok] = idx
                 self._id_to_token[idx] = tok
+                
+            ipdb.set_trace()
+            assert len(_token_to_id) == len(_id_to_token)
+            print('vocab size is %d' % len(_token_to_id))
 
 
+#     def _load_vocab_from_file(self, vocab_path, vocab_size=None):
+# #         vocab = [line.strip().split()[0] for line in open(vocab_path, 'r')]
+#         vocab = [line.strip().split() for line in open(vocab_path, 'r')][0]
+#         vocab = vocab[:vocab_size] if vocab_size else vocab
+#         token2idx = defaultdict()
+#         idx2token = defaultdict()
+
+#         for idx, tok in enumerate(RESERVED_TOKENS):
+#             token2idx[tok] = idx
+#             idx2token[idx] = tok
+#         token_start_idx = self._num_reserved_ids
+#         new_idx = token_start_idx -1
+#         for _, tok in enumerate(vocab):
+        
+#             if tok not in token2idx:
+#                 new_idx += 1
+#                 token2idx[tok] = new_idx
+#                 idx2token[new_idx] = tok
+                
+# #         for idx, tok in enumerate(vocab):
+# #             new_idx = token_start_idx + idx
+# #             token2idx[tok] = new_idx
+# #             idx2token[new_idx] = tok
+
+# #         ipdb.set_trace()
+#         assert len(token2idx) == len(idx2token)
+#         print('vocab size is %d' % len(token2idx))
+#         return token2idx, idx2token
 ###########################################################
 def examples_queue(data_sources,
                    data_fields_to_features,
