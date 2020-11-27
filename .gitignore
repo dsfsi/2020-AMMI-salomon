@@ -82,7 +82,9 @@ data/external/mass-dataset-mod/dataset/wav_verse/
 data/external/mass-dataset-mod.zip
 data/external/mass-dataset-mod/dataset/
 notebooks/MT-ASR/end2end-asr/log/
-data/external/LiSTra/
+data/external/LiSTra/tf_data/
+data/external/LiSTra/dataset/
+data/external/LiSTra/train_models_enln/
 
 # Mac OS-specific storage files
 .DS_Store
