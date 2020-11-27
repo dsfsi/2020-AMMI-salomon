@@ -32,6 +32,8 @@ import tensorflow as tf
 from models import common_layers
 from utils.tfRecord import RESERVED_TOKENS
 
+import ipdb
+
 # Conversion between Unicode and UTF-8, if required (on Python2)
 native_to_unicode = (lambda s: s.decode("utf-8")) if PY2 else (lambda s: s)
 unicode_to_native = (lambda s: s.encode("utf-8")) if PY2 else (lambda s: s)
@@ -117,15 +119,29 @@ class TokenTextEncoder(TextEncoder):
         token_start_idx = self._num_reserved_ids
         # token_start_idx = 0
         with tf.gfile.Open(filename) as f:
-            for i, line in enumerate(f):
-                idx = token_start_idx + i
-                tok = line.strip().split()[0]
-                self._token_to_id[tok] = idx
-                self._id_to_token[idx] = tok
+            
+            vocab = [line.strip().split() for line in f][0]
+            # TODO I need to modify vocabulary size automatically
+            vocab = vocab[:30000] if 30000 else vocab
+            
+            new_idx = token_start_idx -1
+            for _, tok in enumerate(vocab):
+
+                if tok not in self._token_to_id:
+                    new_idx += 1
+                    self._token_to_id[tok] = new_idx
+                    self._id_to_token[new_idx] = tok
+            
+#             for i, line in enumerate(f):
+#                 idx = token_start_idx + i
+#                 tok = line.strip().split()[0]
+#                 ipdb.set_trace()
+#                 self._token_to_id[tok] = idx
+#                 self._id_to_token[idx] = tok
                 
-            ipdb.set_trace()
-            assert len(_token_to_id) == len(_id_to_token)
-            print('vocab size is %d' % len(_token_to_id))
+            
+            assert len(self._token_to_id) == len(self._id_to_token)
+            print('vocab size is %d' % len(self._token_to_id))
 
 
 #     def _load_vocab_from_file(self, vocab_path, vocab_size=None):

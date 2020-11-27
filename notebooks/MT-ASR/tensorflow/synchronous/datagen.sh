@@ -7,8 +7,8 @@ python -m utils.tfRecord \
     --wav_dir_train=../../../../data/external/LiSTra/dataset/wav_verse \
     --wav_dir_dev=../../../../data/external/LiSTra/dataset/wav_verse \
     --wav_dir_test=../../../../data/external/LiSTra/dataset/wav_verse \
-    --vocabA_name=dataset/en-ln.vocab \
-    --vocabB_name=dataset/en-ln.vocab \
+    --vocabA_name=dataset/en.vocab \
+    --vocabB_name=dataset/ln.vocab \
     --vocab_size=30000 \
     --dim_raw_input=80
     

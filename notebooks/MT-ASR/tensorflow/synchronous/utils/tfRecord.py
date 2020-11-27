@@ -29,7 +29,9 @@ def get_argument():
     parser.add_argument("--wav_dir_dev", default='./', help="Wavefile path of dev data.")
     parser.add_argument("--wav_dir_test", default='./', help="Wavefile path of test data.")
     
-    parser.add_argument("--vocab_name", default='./', help="Vocab file name.")
+    parser.add_argument("--vocabA_name", default='./', help="Vocab language A file name.")
+    parser.add_argument("--vocabB_name", default='./', help="Vocab language B file name.")
+    
     parser.add_argument("--vocab_size", type=int, default=30000, help="Vocabulary size.")
     
     parser.add_argument("-d", "--dim_raw_input", type=int, default=80, help="The dimension of input feature.")
@@ -44,7 +46,8 @@ L1 = "<2L1>"
 L2 = "<2L2>"
 DELAY = "<DELAY>"
 UNK = "<UNK>"
-RESERVED_TOKENS = [PAD, EOS, L1, L2, DELAY, UNK]
+SPACE = " "
+RESERVED_TOKENS = [PAD, EOS, L1, L2, DELAY, UNK, SPACE]
 RESERVED_TOKENS_TO_INDEX = {tok: idx for idx, tok in enumerate(RESERVED_TOKENS)}
 
 

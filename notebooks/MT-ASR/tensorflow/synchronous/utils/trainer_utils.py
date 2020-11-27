@@ -221,6 +221,7 @@ def inference_run(model, hparams, output_dir):
             config=session_config(gpu_mem_fraction=FLAGS.gpu_mem_fraction)))
 
     targets_vocab = hparams.vocabulary["targets"]
+    inputs_vocab = hparams.vocabulary["inputs"]
 
     inputs_l1 = []
     decodes_l1 = []
@@ -241,9 +242,9 @@ def inference_run(model, hparams, output_dir):
             batch_length = first_tensor.shape[0]
 
             def log_fn(inputs_l1, inputs_l2, outputs_l1, outputs_l2):
-                decoded_inputs_l1 = targets_vocab.decode(_save_until_eos(inputs_l1.flatten())).replace("@@ ", "")
+                decoded_inputs_l1 = inputs_vocab.decode(_save_until_eos(inputs_l1.flatten())).replace("@@ ", "")
                 tf.logging.info("INPUT en: %s" % decoded_inputs_l1)
-                decoded_outputs_l1 = targets_vocab.decode(
+                decoded_outputs_l1 = inputs_vocab.decode(
                     _save_until_eos(outputs_l1.flatten())).replace("@@ ", "")
                 tf.logging.info("OUPUT en: %s" % decoded_outputs_l1)
 

@@ -6,14 +6,14 @@ python ./run.py  \
     --data_dir=../../../../data/external/LiSTra/tf_data \
     --vocab_src_size=30000  \
     --vocab_tgt_size=30000  \
-    --vocab_src_name=en-ln.vocab \
-    --vocab_tgt_name=en-ln.vocab \
+    --vocab_src_name=en.vocab \
+    --vocab_tgt_name=ln.vocab \
     --hparams_set=transformer_params_base  \
-    --train_steps=10000  \
+    --train_steps=20000  \
     --keep_checkpoint_max=10  \
     --output_dir=../../../../data/external/LiSTra/train_models_enln
     \
-    --pretrain_output_dir=../../../../data/external/LiSTra/train_models 
+    --pretrain_output_dir=../../../../data/external/LiSTra/train_models_enln/ 
 
 
 # export CUDA_VISIBLE_DEVICES=0

@@ -9,8 +9,8 @@ python run.py \
     --output_dir=../../../../data/external/LiSTra/train_models_enln \
     --vocab_src_size=30000 \
     --vocab_tgt_size=30000 \
-    --vocab_src_name=en-ln.vocab\
-    --vocab_tgt_name=en-ln.vocab\
+    --vocab_src_name=en.vocab\
+    --vocab_tgt_name=ln.vocab\
     --train_steps=0 \
     --decode_beam_size=8 \
     --decode_alpha=1.0 \
