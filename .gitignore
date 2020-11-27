@@ -77,9 +77,12 @@ target/
 
 # exclude data from source control by default
 # /data/
-/data/external/TED_Speech_Translation/
-/data/external/mass-dataset-mod/dataset/wav_verse/
-/data/external/mass-dataset-mod.zip
+data/external/TED_Speech_Translation/
+data/external/mass-dataset-mod/dataset/wav_verse/
+data/external/mass-dataset-mod.zip
+data/external/mass-dataset-mod/dataset/
+notebooks/MT-ASR/end2end-asr/log/
+data/external/LiSTra/
 
 # Mac OS-specific storage files
 .DS_Store
