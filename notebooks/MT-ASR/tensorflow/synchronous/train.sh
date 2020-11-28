@@ -1,7 +1,7 @@
-export CUDA_VISIBLE_DEVICES=0,1,2,3
+export CUDA_VISIBLE_DEVICES=0,1 #,2,3
 
 python ./run.py  \
-    --worker_gpu=4 \
+    --worker_gpu=2 \
     --gpu_mem_fraction=0.95 \
     --data_dir=../../../../data/external/LiSTra/tf_data \
     --vocab_src_size=30000  \

@@ -178,8 +178,8 @@ def train_run(model, hparams, output_dir):
                 hooks=all_hooks,
                 save_checkpoint_secs=0,  # Saving is handled by a hook.
                 config=session_config(gpu_mem_fraction=FLAGS.gpu_mem_fraction)) as mon_sess:
-#             ipdb.set_trace()
-#             pre_saver.restore(mon_sess, tf.train.latest_checkpoint(FLAGS.pretrain_output_dir))
+            ipdb.set_trace()
+            pre_saver.restore(mon_sess, tf.train.latest_checkpoint(FLAGS.pretrain_output_dir))
             loss = None
             while not mon_sess.should_stop():
                 _, loss = mon_sess.run([model_fn_ops[1], model_fn_ops[0]])
@@ -415,8 +415,10 @@ def model_builder(model, hparams):
         for v_name in sorted(list(all_weights)):
             v = all_weights[v_name]
             v_size = int(np.prod(np.array(v.shape.as_list())))
-            # tf.logging.info("Weight  %s\tshape    %s\tsize    %d",
-            #        v.name[:-2].ljust(80), str(v.shape).ljust(20), v_size)
+
+            tf.logging.info("Weight  %s\tshape    %s\tsize    %d",
+                   v.name[:-2].ljust(80), str(v.shape).ljust(20), v_size)
+                   
             total_size += v_size
             if hparams.weight_decay > 0.0 and len(v.shape.as_list()) > 1:
                 # Add weight regularization if set and the weight is not a bias (dim>1).

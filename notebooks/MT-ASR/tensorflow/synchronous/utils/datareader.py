@@ -47,6 +47,8 @@ def get_input_fn(mode,
 
                 inputs = tf.reshape(tf.decode_raw(features['inputs'], tf.float32),
                                     [-1, hparams.dim_feature])
+                                    
+                # TODO automatically change 3000
                 inputs = inputs[:3000, :] if drop_long_sequences else inputs
 
                 if transform:

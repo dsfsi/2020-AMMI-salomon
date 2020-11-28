@@ -1,4 +1,4 @@
-hyp=$1
+ hyp=$1
 ref=tst2015.fr
 sed -r 's/(@@ )|(@@ ?$)//g' $hyp > $hyp.out
 sed -r 's/(@@ )|(@@ ?$)//g' $ref > $ref.out
