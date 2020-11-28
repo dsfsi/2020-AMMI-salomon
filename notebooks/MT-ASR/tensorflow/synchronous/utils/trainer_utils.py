@@ -85,6 +85,7 @@ flags.DEFINE_integer("downsample", 3, "Batch size for decoding. ")
 def create_hparams():
     """Returns hyperparameters, including any flag value overrides.
     """
+    ipdb.set_trace()
     if FLAGS.hparams_set == "transformer_params_base":
         hparams = common_hparams.transformer_params_base(FLAGS.data_dir, FLAGS.vocab_src_name, FLAGS.vocab_tgt_name) ## !!
     elif FLAGS.hparams_set == "transformer_params_big":
@@ -115,6 +116,7 @@ def run(model, output_dir):
     """
     # Build Params
     tf.logging.info("Build Params...")
+#     ipdb.set_trace()
     hparams = create_hparams()
 
     if FLAGS.train_steps == 0:

@@ -8,6 +8,8 @@ import os
 import random
 import numpy as np
 
+import ipdb
+
 import tensorflow as tf
 
 from utils import trainer_utils
@@ -81,6 +83,7 @@ def main(_):
         if FLAGS.model != "transformer":
             return
   
+    ipdb.set_trace()
     trainer_utils.run(
             model=FLAGS.model,
             output_dir=FLAGS.output_dir)
