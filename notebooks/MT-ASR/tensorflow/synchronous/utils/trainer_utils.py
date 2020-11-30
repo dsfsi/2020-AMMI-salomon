@@ -415,10 +415,8 @@ def model_builder(model, hparams):
         for v_name in sorted(list(all_weights)):
             v = all_weights[v_name]
             v_size = int(np.prod(np.array(v.shape.as_list())))
-
-            tf.logging.info("Weight  %s\tshape    %s\tsize    %d",
-                   v.name[:-2].ljust(80), str(v.shape).ljust(20), v_size)
-                   
+            # tf.logging.info("Weight  %s\tshape    %s\tsize    %d",
+            #        v.name[:-2].ljust(80), str(v.shape).ljust(20), v_size)
             total_size += v_size
             if hparams.weight_decay > 0.0 and len(v.shape.as_list()) > 1:
                 # Add weight regularization if set and the weight is not a bias (dim>1).
