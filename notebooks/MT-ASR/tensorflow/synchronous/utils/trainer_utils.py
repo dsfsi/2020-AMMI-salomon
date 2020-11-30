@@ -26,7 +26,8 @@ from models.transformer import Transformer
 
 flags = tf.flags
 FLAGS = flags.FLAGS
-flags.DEFINE_string("pretrain_output_dir", "", "Base output directory for run.")
+# TODO : I need to make this sync with the run hparam
+flags.DEFINE_string("pretrain_output_dir", "../../../../data/external/LiSTra/train_models_enln/pretrain_model", "Base output directory for run.")
 flags.DEFINE_string("output_dir", "", "Base output directory for run.")
 flags.DEFINE_string("data_dir", "/tmp/data", "Directory with training data.")
 flags.DEFINE_string("train_src_name", "2m.bpe.unk.zh", "src name of training data.")
@@ -150,6 +151,7 @@ def train_run(model, hparams, output_dir):
         pre_saver = tf.train.Saver([var for var in tf.global_variables() if "encoder" in var.name])
         print(FLAGS.pretrain_output_dir)
         print(tf.train.latest_checkpoint(FLAGS.pretrain_output_dir))
+#         ipdb.set_trace()
 
         saver = tf.train.Saver(sharded=True,
                                max_to_keep=FLAGS.keep_checkpoint_max,
@@ -178,7 +180,7 @@ def train_run(model, hparams, output_dir):
                 hooks=all_hooks,
                 save_checkpoint_secs=0,  # Saving is handled by a hook.
                 config=session_config(gpu_mem_fraction=FLAGS.gpu_mem_fraction)) as mon_sess:
-            ipdb.set_trace()
+#             ipdb.set_trace()
             pre_saver.restore(mon_sess, tf.train.latest_checkpoint(FLAGS.pretrain_output_dir))
             loss = None
             while not mon_sess.should_stop():

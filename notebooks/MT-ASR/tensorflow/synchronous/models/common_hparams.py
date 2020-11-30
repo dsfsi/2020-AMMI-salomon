@@ -90,8 +90,9 @@ def transformer_params_base(data_dir, vocab_src_name, vocab_tgt_name):
     hparams.vocabulary = {
         "inputs": text_reader.TokenTextEncoder(vocab_filename=os.path.join(data_dir, vocab_src_name)),
         "targets": text_reader.TokenTextEncoder(vocab_filename=os.path.join(data_dir, vocab_tgt_name))}
-    hparams.hidden_size = 512
-    hparams.filter_size = 2048
+    hparams.hidden_size = 256
+#     hparams.filter_size = 2048
+    hparams.filter_size = 1024
     hparams.num_heads = 8
     hparams.batching_mantissa_bits = 2    
     

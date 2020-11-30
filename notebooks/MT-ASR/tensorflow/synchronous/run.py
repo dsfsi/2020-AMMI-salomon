@@ -8,6 +8,8 @@ import os
 import random
 import numpy as np
 
+import ipdb
+
 import tensorflow as tf
 
 from utils import trainer_utils

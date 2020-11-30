@@ -1,16 +1,52 @@
+# python -m utils.tfRecord \
+#     --tmp_dir=../../../../data/external/LiSTra \
+#     --data_dir=../../../../data/external/LiSTra/tf_data \
+#     --train_csv_name=dataset/train.en-ln.csv \
+#     --dev_csv_name=dataset/valid.en-ln.csv \
+#     --test_csv_name=dataset/test.en-ln.csv \
+#     --wav_dir_train=../../../../data/external/LiSTra/dataset/wav_verse \
+#     --wav_dir_dev=../../../../data/external/LiSTra/dataset/wav_verse \
+#     --wav_dir_test=../../../../data/external/LiSTra/dataset/wav_verse \
+#     --vocabA_name=dataset/en.vocab \
+#     --vocabB_name=dataset/ln.vocab \
+#     --vocab_size=30000 \
+#     --dim_raw_input=80
+
+
+
+# # Working TED
+
+# python -m utils.tfRecord \
+#     --tmp_dir=../../../../data/external/TED_Speech_Translation \
+#     --data_dir=../../../../data/external/TED_Speech_Translation/tf_data \
+#     --train_csv_name=En-Fr/train.en-fr.csv \
+#     --dev_csv_name=En-Fr/tst2015.en-fr.csv \
+#     --test_csv_name=En-Fr/tst2015.en-fr.csv \
+#     --wav_dir_train=../../../../data/external/TED_Speech_Translation/wav/train-segment \
+#     --wav_dir_dev=../../../../data/external/TED_Speech_Translation/wav/test-segment/tst2015 \
+#     --wav_dir_test=../../../../data/external/TED_Speech_Translation/wav/test-segment/tst2015 \
+#     --vocabA_name=En-Fr/en.vocab \
+#     --vocabB_name=En-Fr/fr.vocab \
+#     --vocab_size=30000 \
+#     --dim_raw_input=80
+
+
+# Working Libre Speech
+
 python -m utils.tfRecord \
-    --tmp_dir=../../../../data/external/LiSTra \
-    --data_dir=../../../../data/external/LiSTra/tf_data \
-    --train_csv_name=dataset/train.en-ln.csv \
-    --dev_csv_name=dataset/valid.en-ln.csv \
-    --test_csv_name=dataset/test.en-ln.csv \
-    --wav_dir_train=../../../../data/external/LiSTra/dataset/wav_verse \
-    --wav_dir_dev=../../../../data/external/LiSTra/dataset/wav_verse \
-    --wav_dir_test=../../../../data/external/LiSTra/dataset/wav_verse \
-    --vocabA_name=dataset/en.vocab \
-    --vocabB_name=dataset/ln.vocab \
+    --tmp_dir=../../../../data/external/LibriSpeech_dataset \
+    --data_dir=../../../../data/external/LibriSpeech_dataset/tf_data \
+    --train_csv_name=dataset/trainLibreSpeech.en-na.csv \
+    --dev_csv_name=dataset/validLibreSpeech.en-na.csv \
+    --test_csv_name=dataset/validLibreSpeech.en-na.csv \
+    --wav_dir_train=../../../../data/external/LibriSpeech_dataset/train/wav \
+    --wav_dir_dev=../../../../data/external/LibriSpeech_dataset/val/wav \
+    --wav_dir_test=../../../../data/external/LibriSpeech_dataset/val/wav \
+    --vocabA_name=dataset/en-na.vocab \
+    --vocabB_name=dataset/en-na.vocab \
     --vocab_size=30000 \
     --dim_raw_input=80
+
     
 # python ./utils/tfRecord.py \
 #     --tmp_dir=./data/raw_data \
@@ -39,17 +75,4 @@ python -m utils.tfRecord \
 #     --dim_raw_input=80
 
 
-# Working TED
 
-# python -m utils.tfRecord \
-#     --tmp_dir=../../../../data/external/TED_Speech_Translation \
-#     --data_dir=../../../../data/external/TED_Speech_Translation/tf_data \
-#     --train_csv_name=En-Fr/train.en-fr.csv \
-#     --dev_csv_name=En-Fr/tst2015.en-fr.csv \
-#     --test_csv_name=En-Fr/tst2015.en-fr.csv \
-#     --wav_dir_train=../../../../data/external/TED_Speech_Translation/wav/train-segment \
-#     --wav_dir_dev=../../../../data/external/TED_Speech_Translation/wav/test-segment/tst2015 \
-#     --wav_dir_test=../../../../data/external/TED_Speech_Translation/wav/test-segment/tst2015 \
-#     --vocab_name=En-Fr/en-fr.vocab \
-#     --vocab_size=30000 \
-#     --dim_raw_input=80
