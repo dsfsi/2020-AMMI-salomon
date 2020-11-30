@@ -83,7 +83,6 @@ def main(_):
         if FLAGS.model != "transformer":
             return
   
-    ipdb.set_trace()
     trainer_utils.run(
             model=FLAGS.model,
             output_dir=FLAGS.output_dir)

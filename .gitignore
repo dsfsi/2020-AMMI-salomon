@@ -85,6 +85,8 @@ notebooks/MT-ASR/end2end-asr/log/
 data/external/LiSTra/tf_data/
 data/external/LiSTra/dataset/
 data/external/LiSTra/train_models_enln/
+data/external/LiSTra/train_models/model.ckpt-20000.data-00001-of-00002
+data/external/LibriSpeech_dataset/
 
 # Mac OS-specific storage files
 .DS_Store

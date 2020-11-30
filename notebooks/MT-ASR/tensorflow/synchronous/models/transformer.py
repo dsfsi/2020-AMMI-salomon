@@ -115,10 +115,12 @@ class Transformer(object):
                 body_outputs_l1, sharded_features["targets_l1"], self._data_parallelism))
             sharded_logits_l2, training_loss_l2 = (self._hparams.target_modality.top_sharded(
                 body_outputs_l2, sharded_features["targets_l2"], self._data_parallelism))
+            # TODO: this heps to choise if we need to combine the lossesh
             training_loss = training_loss_l1 + training_loss_l2
-            # training_loss = training_loss_l1
-      
             training_loss *= self._hparams.loss_multiplier
+
+#             training_loss = training_loss_l1
+#             training_loss *= 1.0
 
         tf.logging.info("This model_fn took %.3f sec." % (time.time() - start_time))
         return sharded_logits, training_loss, extra_loss

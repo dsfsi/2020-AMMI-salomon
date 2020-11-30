@@ -57,7 +57,7 @@ def get_input_fn(mode,
                 target_l2 = tf.decode_raw(features['target_l2'], tf.int32)
                 
                 # Manually Add delay (for wait-k)
-                delay_target_l2 = tf.concat([tf.constant([DELAY_SYMBOL, DELAY_SYMBOL, DELAY_SYMBOL, L2_SYMBOL], tf.int32),
+                delay_target_l2 = tf.concat([tf.constant([DELAY_SYMBOL, DELAY_SYMBOL, L2_SYMBOL], tf.int32),
                                              target_l2[1:]], 0)
 
                 feature_map = {"inputs": inputs, "targets_l1": target_l1,
