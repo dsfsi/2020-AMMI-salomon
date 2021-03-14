@@ -1,0 +1,5 @@
+data_file ../../../../data/processed/tf_data/train.en-ln.csv
+dim_feature 80
+num_tokens 21966951
+size_dataset 23717
+damaged samples: 0

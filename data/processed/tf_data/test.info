@@ -1,0 +1,5 @@
+data_file ../../../../data/processed/tf_data/test.en-ln.csv
+dim_feature 80
+num_tokens 5482649
+size_dataset 5930
+damaged samples: 0
