@@ -76,7 +76,7 @@ target/
 .ipynb_checkpoints/
 
 # exclude data from source control by default
-# /data/
+data/
 data/external/TED_Speech_Translation/
 data/external/mass-dataset-mod/dataset/wav_verse/
 data/external/mass-dataset-mod.zip
@@ -104,5 +104,4 @@ notebooks/MT-ASR/en2ln/
 
 *.pt
 
-notebooks/MT-ASR/.data/
-notebooks/MT-ASR/end2end-asr/save/
+notebooks/

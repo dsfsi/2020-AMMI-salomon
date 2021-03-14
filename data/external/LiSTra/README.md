@@ -1,10 +1,9 @@
-# MaSS - Multilingual corpus of Sentence-aligned Spoken utterances
-
-This is the repository for the CMU multilingual speech extension data set presented on the paper entitled *[MaSS: A Large and Clean Multilingual Corpus of Sentence-aligned Spoken
-Utterances Extracted from the Bible](https://arxiv.org/pdf/1907.12895.pdf)*.
+# LiSTra
+This repository contains the "Lingala Speech Translation (LiSTra)" dataset presented on the paper entitled *[LiSTra, Automatic Speech Translation : English to Lingala casestudy]()*.
 
 ## Data
-For copyright reasons, we are not allowed to share the audio files however, we provide the extraction pipeline below. We also highlight this pipeline can be used to new languages of interested.
+For copyright reasons, we are not able to share the audio files however, we provide the extraction pipeline below. We also highlight this pipeline can be used to new languages of interested.
+
 Inside the dataset folder, for each language we provide:
 - Alignment textgrids (from Maus forced aligner)
 - Final textual output and segments textgrids
@@ -13,22 +12,30 @@ Inside the dataset folder, for each language we provide:
 
 ## Pipeline
 
-### 1) Downloading audio chapters from [bible.is](bible.is).
+- Source language Audio Download and Renaming : [01-Audio download Rename.ipynb](link)
 
-  1.1. The audios used in our work are available in the following links:
-  - [Basque dataset](https://www.faithcomesbyhearing.com/audio-bibles/download/eus/EUSEABN1DA)
-  - [English dataset](https://www.faithcomesbyhearing.com/audio-bibles/download/eng/ENGESVN1DA)
-  - [Finnish dataset](https://www.faithcomesbyhearing.com/audio-bibles/download/fin/FIN38VN1DA)
-  - [French dataset](https://www.faithcomesbyhearing.com/audio-bibles/download/frn/FRNTLSN2DA)
-  - [Hungarian dataset](https://www.faithcomesbyhearing.com/audio-bibles/download/hun/HUNHBSN1DA)
-  - [Romanian dataset](https://www.faithcomesbyhearing.com/audio-bibles/download/ron/RONDCVN1DA)
-  - [Russian dataset](https://www.faithcomesbyhearing.com/audio-bibles/download/rus/RUSS76N2DA)
-  - [Spanish dataset](https://www.faithcomesbyhearing.com/audio-bibles/download/spn/SPNBDAN1DA)
+- Download the corresponding text file for the source language :  [02-BibleisWebScrapping.ipynb](link).
+- Download the corresponding text file for the target language :  [03-JwWebscraping.ipynb](link).
+- Generate TextGrid files :  [04-webMausWavGenerator.ipynb](link).
+- Rename the wav files :  [05.Rename_wav_files.ipynb](link).
 
-  1.2. The audios were converted from multi to single channel and forced aligned by using [this](https://github.com/getalp/mass-dataset/blob/master/scripts/force-align.py) script. 
 
-  1.3. The raw chapter text files are not available for download anymore at the website. Thus, we provide them at dataset/LANGUAGE/raw_txt/. For new languages, chapter text files can be extracted from [this webpage](https://www.faithcomesbyhearing.com/audio-bibles/bible-recordings). 
-  These .txt files (chapter level) should be put on the same folder than the audios.
+After having you dataset you may need to run the following script to check for specific missing file:
+    - If the two forders contains text: `bash check_diff.sh english/ lingala/ false` 
+    - If the second folder is a folder to the waves : `bash check_diff.sh english/ wav_verse/ true`
+    - To compare raw_txt with TextGrid : `bash check_diff_TextGrid.sh english/raw_txt/ english/maus_textgrid/ true`
+
+Note: Please make sure the first param is the txt and the second is wav, if both are txt juste put the last param to false.
+
+
+
+### Downloading Audio chapters for the source language from [bible.is](bible.is).
+
+
+1.2. The audios were converted from multi to single channel and forced aligned by using [this](https://github.com/getalp/mass-dataset/blob/master/scripts/force-align.py) script. 
+
+1.3. The raw chapter text files are not available for download anymore at the website. Thus, we provide them at dataset/LANGUAGE/raw_txt/. For new languages, chapter text files can be extracted from [this webpage](https://www.faithcomesbyhearing.com/audio-bibles/bible-recordings). 
+These .txt files (chapter level) should be put on the same folder than the audios.
 
 ### 2) Aligning the data with [Maus forced aligner](https://clarin.phonetik.uni-muenchen.de/BASWebServices/interface/WebMAUSBasic)
 For the covered languages, we make available the output from the Maus forced aligner in LANGUAGE/maus\_textgrid/. For new languages, please check the Website.
@@ -56,21 +63,13 @@ The speech-to-speech retrieval baseline model proposed at the paper is available
 
 If you use this corpus in your experiments, please use the following bibtex for citation
 
-@inproceedings{boito2020mass,
-    title={MaSS: A Large and Clean Multilingual Corpus of Sentence-aligned Spoken Utterances Extracted from the Bible},
-    author={Marcely Zanon Boito and William N. Havard and Mahault Garnerin and Éric Le Ferrand and Laurent Besacier},
-    booktitle = {Language Resources and Evaluation Conference (LREC) 2020},
-   year={2020},
- }
- 
-## Team and Contact
 
-The people behind the (325) project:
+## Credit
 
-* ![ORCiD Logo](https://zenodo.org/static/img/orcid.png) [Marcely ZANON BOITO](https://orcid.org/0000-0003-0134-6719)
-* ![ORCiD Logo](https://zenodo.org/static/img/orcid.png) [William N. HAVARD](https://orcid.org/0000-0002-1226-4156)
-* Mahault GARNERIN
-* Eric Le FERRAND
-* ![ORCiD Logo](https://zenodo.org/static/img/orcid.png) [Laurent BESACIER](https://orcid.org/0000-0001-7411-9125)
+- [MaSS: A Large and Clean Multilingual Corpus of Sentence-aligned Spoken Utterances Extracted from the Bible](https://github.com/getalp/mass-dataset)
 
-You can contact them at first.last-name@univ-grenoble-alpes.fr
+
+## Contact
+
+You can contact them me at skabenamualu@aimsammi.org
+

@@ -5,6 +5,23 @@ Speech to text translation in low resource Setting : English - Lingala
 
 In this work we would like investigate the effectiveness of end-to-end architecture in opposite to pipeline approach by using the a transformer like architecture \cite{liu2019synchronous} and a custom attention mechanism that will weight both the speech recognition decoder with the translation decoder.
 
+
+## Evaluation 
+
+bash wer.sh ../data/processed/wait1/test.en.output
+bash wer.sh ../data/processed/wait2/test.en.output
+bash wer.sh ../data/processed/wait3/test.en.output
+
+bash blue.sh ../data/processed/wait1/test.en.output
+bash blue.sh ../data/processed/wait2/test.en.output
+bash blue.sh ../data/processed/wait3/test.en.output
+
+bash blue.sh ../data/processed/wait1/test.ln.output
+bash blue.sh ../data/processed/wait2/test.ln.output
+bash blue.sh ../data/processed/wait3/test.ln.output
+
+
+
 Project Organization
 ------------
 
