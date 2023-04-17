@@ -15,5 +15,5 @@ The used dataset is constructed following instructions in this repository [https
 
 ## Contact
 
-You can contact them me at skabenamualu@aimsammi.org
+You can contact me at kabongosalomon@gmail.com
 
